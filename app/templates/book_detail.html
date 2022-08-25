@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+{% block content %}
+
+    <h2>{{ book.title }}</h2>
+    <figure style="float: left; margin-right: 20px;">
+        <img src="{{ book.poster.url }}" alt="" style="width: 200px;">
+    </figure>
+    <div>
+
+        <p>Автор: {% for author in book.author.all %} {{ author }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+        <p>Год издания: {{ book.year }}</p>
+        <p>Жанры: {% for genre in book.genres.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        <p>Описание: {{ book.description }}</p>
+    </div>
+{% endblock %}

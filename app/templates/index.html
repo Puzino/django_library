@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    Главная страница
+{% endblock %}
+{% block content %}
+
+    <ul class="products columns-4">
+        {% for book in books %}
+
+        <li class="product-category product first small-6 large-3 columns thb-category-style1">
+            <a
+                    href="{% url 'book-detail' book.id %}"
+                    class="thb-category-link"
+            >
+                <div class="thb-product-category-image">
+                    <img
+                            src="{{ book.poster.url }}"
+                            alt="Everything Else"
+                            width="300"
+                            height="300"
+                    />
+                </div>
+                <h2 class="woocommerce-loop-category__title">
+                    {{ book.title }}
+
+                </h2>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
